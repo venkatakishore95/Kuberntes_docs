@@ -1,0 +1,32 @@
+
+az webapp traffic-routing -d <slotname>=<value> -n <webappname>  -g <resourcegroup>
+
+az webapp deployment slot swap --slot <sourceslot>  --target-slot production -n <webappname>  -g <resourcegroup>
+
+
+az webapp traffic-routing set -d Blue=20 -n Palapar  -g Infosys
+
+az webapp deployment slot swap --slot <sourceslot>  --target-slot production -n InfyWebAppvd  -g Infosys
+
+microsoft.github.io/PartsUnlimitedMRP/azurestack
+
+tiny.cc/AZ400 -> Created aa AzureDocker Registry
+
+Kubernetes:
+===============================================================================================
+
+az group create -n KubeDemo -l eastus
+			
+az aks create -g KubeDemo -n kubeclusterinfypj -l eastus --disable-rbac  --node-count 2 --node-vm-size Standard_DS1_v2 --generate-ssh-keys
+
+az aks install-cli
+
+az aks get-credentials --resource-group KubeDemo --name kubeclusterinfypj
+
+az aks browse --resource-group KubeDemo --name kubeclusterinfypj
+
+ https://gateway13.centralindia.console.azure.com/n/cc-7abde289/cc-7abde289/proxy/8001/
+
+https://pastebin.com/ffjNjtgL
+
+kubectl create secret 

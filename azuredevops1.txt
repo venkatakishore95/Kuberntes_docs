@@ -1,0 +1,62 @@
+https://dev.azure.com/venkatakishoredevops/
+
+SDLC:
+-----
+
+planning like jira-WORKITEMS BOARDS-
+version controls like git-in microsoft azure repo-git,tfvc
+test-mictosoft test manager
+deployememt- build pipleines,release pipielines
+
+Git,
+VSCODE
+.NET core 2.2
+
+SKIllPipeline code: HQIT-VRVD-ISBU-CDLU
+-----------
+AZUREPASSCODE-   Q7PEUF6XLR2JDIYGGE
+
+
+
+ Q7PEUF6XLR2JDIYGGE
+
+https://www.skillpipe.com/#/account/login
+
+https://azuredevopslabs.com/labs/azuredevops/git/
+https://azuredevopslabs.com/labs/azuredevops/continuousintegration/
+
+https://azuredevopslabs.com/labs/vstsextend/sonarcloud/
+https://azuredevopslabs.com/labs/vstsextend/whiteSource/
+
+https://www.microsoftazurepass.com/
+
+https://portal.azure.com/#home
+
+https://portal.azure.com/#@venkatakishoredevopsgmail.onmicrosoft.com/resource/subscriptions/f4d002a8-e66d-4fd6-8e24-d54a649305be/resourceGroups/Infosys/providers/Microsoft.Compute/virtualMachines/InfyVM/overview
+
+https://dev.azure.com/venkatakishoredevops/Test-Azure/_build?definitionId=1
+az group create -n Infosys -l eastus
+
+az vm create -g "Infosys" -n "InfyVM" --image "Win2016Datacenter" --admin-username "kishore" --admin-password "Testpa55w0rd" --location "eastus" --size Standard_B4ms
+
+
+git branch
+git branch branch name
+
+git checkout<branchname> to switch branch
+
+git push --set-upstream origin dev
+
+
+#Migrate changes from one branch to another
+  generate pull request from devops portal
+  Add reviewer
+
+
+#pull new changes in local git
+   git pull
+
+#history dev branch
+
+git checkout dev
+git log

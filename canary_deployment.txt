@@ -1,0 +1,28 @@
+Blue Green Deployment:
+======================================
+
+Production deployment slot is Green slot - perform the swap activity (Production url is mapped to pre-prod and pre-prod url is mapped to prod url)
+
+pre-prod deployment slot is Blue
+
+https://www.azuredevopslabs.com/labs/azuredevops/git/
+
+https://www.azuredevopslabs.com/labs/azuredevops/continousintegration
+
+https://www.azuredevopslabs.com/labs/vsrsextend/jenkins
+
+https://www.azuredevopslabs.com/labs/vstsextend/Releasemanagement
+
+https://www.azuredevopslabs.com/labs/vstsextend/deploymentgroups
+
+https://www.azuredevopslabs.com/labs/vstsextend/azurekeyvault/
+
+https://www.azuredevopslabs.com/labs/vstsextend/terraform/
+
+
+(Optional) :
+
+https://www.azuredevopslabs.com/labs/vstsextend/azuredevopsprojectdotnet
+https://www.azuredevopslabs.com/labs/vstsextend/python/
+https://www.azuredevopslabs.com/labs/vstsextend/php/
+https://www.azuredevopslabs.com/labs/vstsextend/octopus/
