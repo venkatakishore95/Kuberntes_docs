@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: deploy1
+  name: deploy1
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: deploy1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: deploy2
+  name: deploy2
+spec:
+  ports:
+  - port: 8500
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: deploy2
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: deploy3
+  name: deploy3
+spec:
+  ports:
+  - port: 9000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: deploy3

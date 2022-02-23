@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cache
+spec:
+  selector:
+    matchLabels:
+      cloud: aws
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        cloud: aws
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: cloud
+                operator: In
+                values:
+                - aws
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: redis-server
+        image: sreeharshav/rollingupdate:v3

@@ -1,0 +1,123 @@
+#Block Ingress & Egnress for POD with label env=prod in namespace prod
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: prod-pod-deny-all
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      env: prod
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress: []
+  egress: []
+---
+#Allow Traffic from DEV & TEST Namespace to PROD namespace
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-from-test-to-prod
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      env: prod
+  policyTypes:
+    - Ingress
+  ingress: 
+    - from:
+        - podSelector:
+             matchLabels:
+                env: dev
+        - namespaceSelector:
+             matchLabels:
+                env: dev
+        - podSelector:
+             matchLabels:
+                env: test
+        - namespaceSelector:
+             matchLabels:
+                env: test
+
+---
+#Allow Traffic from DEV & TEST Namespace to PROD namespace on specific ports
+#The Ports spec need to be removed if you want to enable ICMP.
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-from-test-to-prod
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      env: prod
+  policyTypes:
+    - Ingress
+  ingress: 
+    - from:
+        - podSelector:
+             matchLabels:
+                env: dev
+        - namespaceSelector:
+             matchLabels:
+                env: dev
+        - podSelector:
+             matchLabels:
+                env: test
+        - namespaceSelector:
+             matchLabels:
+                env: test
+      ports:
+        - port: 8880
+          protocol: TCP
+        - port: 8000
+          protocol: TCP
+        #Add below port after testing
+        - port: 8888
+          protocol: TCP
+
+#Block All Egress for pods with label env=test in namespace test
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-egress 
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      env: prod
+  policyTypes:
+    - Egress
+  egress: []
+
+#Allow Egress from pods in test namespace to talk on TCP/8000/8888 to prod namespace
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-egress 
+  namespace: test
+spec:
+  podSelector:
+    matchLabels:
+      env: test
+  policyTypes:
+    - Egress
+  egress:
+  - to:
+     - namespaceSelector: 
+          matchLabels:
+            env: prod
+       podSelector:
+          matchLabels:
+            env: prod
+    ports:
+      - protocol: TCP
+        port: 8000
+      - protocol: TCP
+        port: 8888
+
+

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy1
+  name: deploy1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy1
+  template:
+    metadata:
+      labels:
+        app: deploy1
+    spec:
+      containers:
+      - image: index.docker.io/sreeharshav/rollingupdate:v1
+        name: rollingupdate
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy2
+  name: deploy2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy2
+  template:
+    metadata:
+      labels:
+        app: deploy2
+    spec:
+      containers:
+      - image: index.docker.io/sreeharshav/rollingupdate:v5
+        name: rollingupdate
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy3
+  name: deploy3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy3
+  template:
+    metadata:
+      labels:
+        app: deploy3
+    spec:
+      containers:
+      - image: index.docker.io/sreeharshav/testcontainer:v1
+        name: testcontainer
+
+---
